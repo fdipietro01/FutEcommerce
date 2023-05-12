@@ -8,10 +8,9 @@ import Loading from "../Loading/loading.jsx";
 import Checkout from "../Checkout/Checkout";
 
 const CheckoutContainer = () => {
-  const { estaVacio } = useContext(CartContext);
+  const { estaVacio, order, definirOrden } = useContext(CartContext);
   const { user } = useContext(LoginContext);
   const navigate = useNavigate();
-  const [order, setOrder] = useState();
 
   const submitOrder = async () => {
     if (user) {
@@ -23,7 +22,7 @@ const CheckoutContainer = () => {
       if (status === "error")
         SwalFn("Compra no realizada", message, "error", "Aceptar");
       else SwalFn("Compra realizada con éxito", message, "success", "Aceptar");
-      setOrder(data);
+      definirOrden(data);
     }
   };
 

@@ -13,7 +13,7 @@ export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [carrito, setCarrito] = useState([]);
-  const [orden, setOrden] = useState();
+  const [order, setOrder] = useState();
   const { user, updateCartUser } = useContext(LoginContext);
 
   const createCartAndSetToUser = async () => {
@@ -34,6 +34,10 @@ const CartProvider = ({ children }) => {
       }
     } else setCarrito([]);
   }, [user]);
+
+  useEffect(() => {
+    order && setCarrito(order.remainingProducts ?? []), [order];
+  });
 
   const agregarProducto = async (nuevoItem, cantidad) => {
     const { status } = await updateCart(user.carrito, nuevoItem._id, cantidad);
@@ -62,10 +66,10 @@ const CartProvider = ({ children }) => {
 
   const estaVacio = () => carrito.length === 0;
 
-  const definirOrden = (orden) => setOrden(orden);
+  const definirOrden = (orden) => setOrder(orden);
 
   const reiniciarContexto = () => {
-    setOrden();
+    setOrder();
     setCarrito([]);
   };
 
@@ -82,7 +86,7 @@ const CartProvider = ({ children }) => {
         reiniciarContexto,
         estaVacio,
         carrito,
-        orden,
+        order,
       }}
     >
       {children}
