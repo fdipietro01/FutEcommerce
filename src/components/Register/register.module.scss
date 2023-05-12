@@ -1,0 +1,43 @@
+
+.container{
+    margin: 40px auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    background-image: url("../../assets/images/bk.jfif");
+    border-radius: 10px;
+    margin-bottom: 100px;
+}
+
+.group{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.label{
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.input{
+    border-radius: 5px;
+    padding-left: 3px;
+}
+
+.btns{
+    display: flex;
+    margin-top: 40px;
+    width: 300px;
+    justify-content: space-around;
+}
+
+.btns button{
+    padding: 2px 15px;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}

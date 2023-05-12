@@ -1,0 +1,104 @@
+.cardsContainer{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 80px 80px 80px;
+    background-image: url("../../assets/images/bk.jfif");
+    border-radius: 10px;
+}
+.tittleContainer{
+    display: flex;
+    justify-content: center;
+}
+.title{
+    border: 3px solid rgba(0, 0, 0, 0.404);
+    text-align: center;
+    font-size: 24px;
+    border-radius: 9px;
+    padding: 10px;
+    color: rgba(14, 51, 96, 0.725);
+    font-weight: 600;
+    margin-top: 40px;
+}
+
+.paginate{
+    display: flex;
+    margin-top: 50px;
+    width: 320px;
+    justify-content: space-around;
+}
+
+.btn {
+    padding: 2px 9px;
+    background-color: white;
+    border: 2px solid rgba(0, 0, 0, 0.404);
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+.productBar{
+    margin-top: 20px;
+    margin-left: 40px;
+    display: flex;
+    width: 100%;
+    color: black;
+    width: 475px;
+   justify-content: space-around;
+   padding: 5px;
+   padding-top: 10px;
+   border: 3px solid white;
+   border-radius: 10px;
+   background-color: white;
+}
+
+.productBar > *{
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.inputBox{
+    display: flex;
+}
+
+.inputBox input{
+    width: 40px;
+    font-size: 12px;
+    margin: 0 7px;
+    text-align: center;
+}
+
+.price:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.noProd{
+    margin: 20px;
+    height: 300px;
+    width: 500px;
+    border: 3px solid white;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.noProd h3{
+    padding: 3px;
+    border-radius: 10px;
+    border: 2px solid white;
+
+}
+.img{
+    border-radius: 10px;
+    width: 450px;
+    height: 75%;
+}
