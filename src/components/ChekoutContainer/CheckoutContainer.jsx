@@ -18,7 +18,6 @@ const CheckoutContainer = () => {
         user.carrito,
         user.email
       );
-      console.log(data, "piss");
       if (status === "error")
         SwalFn("Compra no realizada", message, "error", "Aceptar");
       else SwalFn("Compra realizada con éxito", message, "success", "Aceptar");

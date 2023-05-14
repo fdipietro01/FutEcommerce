@@ -94,7 +94,6 @@ export const purchaseCart = async (cid, email) => {
         withCredentials: true,
       }
     );
-    console.log("purchase", response);
     return {
       status: response.data.status,
       message: response.data.message,

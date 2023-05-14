@@ -15,6 +15,7 @@ import LogOutContainer from "./components/LogOutContainer/LogOutContainer";
 import RegisterContainer from "./components/RegisterContainer/RegisterContainer";
 import ProfileCardContainer from "./components/ProfileCardContainer/ProfileCardContainer";
 import ProductManagerContainer from "./components/ProductManagerContainer/ProductManagerContainer";
+import ChatContainer from "./components/ChatContainer/ChatContainer";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<CheckoutContainer />} />
               <Route path="/feedback" element={<Feedback />} />
+              <Route path="/chat" element={<ChatContainer />} />
               <Route path="*" element={<DefaultFailView />} />
             </Routes>
             <Footer />

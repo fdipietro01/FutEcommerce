@@ -3,6 +3,7 @@ import { CartWidget } from "../CartWidget/CartWidget";
 import logo from "../../assets/images/logo.jpg";
 import { Link } from "react-router-dom";
 import UserWidget from "../UserWidget/UserWidget";
+import ChatWidget from "../ChatWidget/ChatWidget";
 
 const Navbar = () => {
   const categories = [
@@ -30,6 +31,9 @@ const Navbar = () => {
       </div>
 
       <div className={styles.cart}>
+        <Link to="/chat">
+          <ChatWidget />
+        </Link>
         <Link to="/cart">
           <CartWidget />
         </Link>
