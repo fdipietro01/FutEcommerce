@@ -8,6 +8,7 @@ import {
   deleteCart,
   getProductsFromCart,
 } from "../services/cartServices";
+import { SwalFn } from "../utils/swal";
 
 export const CartContext = createContext();
 
@@ -41,6 +42,14 @@ const CartProvider = ({ children }) => {
 
   const agregarProducto = async (nuevoItem, cantidad) => {
     const { status } = await updateCart(user.carrito, nuevoItem._id, cantidad);
+    if (status !== 200) {
+      SwalFn(
+        "Error al agregar el producto",
+        "El carrito no ha sido modificado",
+        "error",
+        "Aceptar"
+      );
+    }
     await requestProducts(user.carrito);
   };
   const existeProducto = (id) =>

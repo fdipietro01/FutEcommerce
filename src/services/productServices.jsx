@@ -8,11 +8,11 @@ export const getAllProducts = async ({
   category,
   status,
 }) => {
-  return await axios(
-    `http://localhost:8081/api/products/?limit=${limit}&page=${page}&sort=${sort}&${
-      category && `category=${category}`
-    }&${status && `status=${status}`}`
-  );
+  let urlBase = `http://localhost:8081/api/products/?limit=${limit}&page=${page}&sort=${sort}`;
+  if (category) urlBase += `&category=${category}`;
+  if (status) urlBase += `&status=${status}`;
+  console.log(urlBase);
+  return await axios(urlBase);
 };
 
 export const getProductById = async (id) => {
