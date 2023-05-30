@@ -33,6 +33,7 @@ const Login = ({ handleInput, handleSubmit, handleLogin }) => {
             onChange={(e) => handleInput(e)}
             className={styles.input}
             name="avatar"
+            maxLength={"150"}
           />
         </div>
         <div className={styles.group}>
@@ -49,6 +50,15 @@ const Login = ({ handleInput, handleSubmit, handleLogin }) => {
             onChange={(e) => handleInput(e)}
             className={styles.input}
             name="password"
+          />
+        </div>
+        <div className={styles.radio}>
+          <label className={styles.label}>Membresía Premium</label>
+          <input
+            onChange={(e) => handleInput(e)}
+            className={styles.input}
+            name="isPremium"
+            type="checkbox"
           />
         </div>
         <div className={styles.btns}>

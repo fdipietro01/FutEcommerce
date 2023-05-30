@@ -12,6 +12,8 @@ import Feedback from "./components/Feedback/Feedback";
 import LoginContextProvider from "./context/loginContext";
 import LoginContainer from "./components/LoginContainer/loginContainer";
 import LogOutContainer from "./components/LogOutContainer/LogOutContainer";
+import ReloginContainer from "./components/ReloginContainer/ReloginContainer";
+import Relogin from "./components/Relogin/Relogin";
 import RegisterContainer from "./components/RegisterContainer/RegisterContainer";
 import ProfileCardContainer from "./components/ProfileCardContainer/ProfileCardContainer";
 import ProductManagerContainer from "./components/ProductManagerContainer/ProductManagerContainer";
@@ -31,6 +33,8 @@ function App() {
               <Route path="/login" element={<LoginContainer />} />
               <Route path="/logOut" element={<LogOutContainer />} />
               <Route path="/register" element={<RegisterContainer />} />
+              <Route path="/reloginPetittion" element={<ReloginContainer />} />
+              <Route path="/relogin/" element={<Relogin />} />
               <Route
                 path="/productManagerList"
                 element={<ProductManagerContainer />}

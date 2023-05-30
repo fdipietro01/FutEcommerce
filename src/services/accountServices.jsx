@@ -25,6 +25,7 @@ export const createUser = async ({
   edad,
   avatar,
   fecha,
+  isPremium,
 }) => {
   try {
     const response = await axios.post(
@@ -37,11 +38,48 @@ export const createUser = async ({
         edad,
         avatar,
         fecha,
+        isPremium,
       }
     );
     return { message: response.data.message, status: response.status };
   } catch (err) {
     return { message: err.response.data.message };
+  }
+};
+
+export const reloginPetittion = async (mail) => {
+  try {
+    const response = await axios.post(
+      `http://localhost:8081/sessions/reloginPetittion`,
+      {
+        mail,
+      }
+    );
+    return {
+      message: response.data.message,
+      status: response.status,
+    };
+  } catch (err) {
+    return { message: err.response.data.message };
+  }
+};
+
+export const relogin = async ({ mail, password }) => {
+  try {
+    const response = await axios.post(
+      `http://localhost:8081/sessions/relogin`,
+      {
+        mail,
+        password,
+      }
+    );
+    return {
+      message: response.data.message,
+      status: response.status,
+    };
+  } catch (err) {
+    console.log(err);
+    return { message: err.response.data.message, status: err.response.status };
   }
 };
 

@@ -11,7 +11,6 @@ export const getAllProducts = async ({
   let urlBase = `http://localhost:8081/api/products/?limit=${limit}&page=${page}&sort=${sort}`;
   if (category) urlBase += `&category=${category}`;
   if (status) urlBase += `&status=${status}`;
-  console.log(urlBase);
   return await axios(urlBase);
 };
 
@@ -32,7 +31,7 @@ export const updateItem = async (item) => {
     );
     return { status: response.status };
   } catch (err) {
-    return { status: err.response.status };
+    return { status: err.response.status, message: err.response.data.message };
   }
 };
 
@@ -48,7 +47,7 @@ export const eraseItem = async (pid) => {
     );
     return { status: response.status, id: response.data };
   } catch (err) {
-    return { status: err.response.status };
+    return { status: err.response.status, message: err.response.data.message };
   }
 };
 

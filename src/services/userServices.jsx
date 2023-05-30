@@ -14,7 +14,7 @@ export const updateUser = async (id, cid) => {
     );
     return { user: response.data.user, status: response.status };
   } catch (err) {
-    console.log(err, "err");
+    console.log(err);
     return { status: err.response.status };
   }
 };

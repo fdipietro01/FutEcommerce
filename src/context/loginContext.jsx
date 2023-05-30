@@ -15,8 +15,8 @@ const LoginContextProvider = ({ children }) => {
   };
 
   const logOutSession = async () => {
-    const { status } = await logOut();
-    if (status === 200) {
+    const response = await logOut();
+    if (response?.status === 200) {
       Cookies.remove("JWT");
       setUser();
     }

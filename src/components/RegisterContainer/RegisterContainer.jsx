@@ -16,12 +16,17 @@ const RegisterContainer = () => {
     apellido: "",
     edad: "",
     avatar: "",
+    isPremium: false,
   });
 
   const handleInput = ({ target }) => {
-    const newUser = { ...user };
-    newUser[target.name] = target.value;
-    setUser(newUser);
+    const newUser = user;
+    if (target.name === "isPremium") {
+      newUser.isPremium = !newUser.isPremium;
+    } else {
+      newUser[target.name] = target.value;
+    }
+    setUser({ ...newUser });
   };
 
   const handleSubmit = async (e) => {

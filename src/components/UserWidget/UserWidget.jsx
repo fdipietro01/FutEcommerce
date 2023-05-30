@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const UserWidget = () => {
   const { user } = useContext(LoginContext);
   const [showOptions, setShowOptions] = useState(false);
-  const isAdmin = user?.role === "Admin";
+  const isAdmin = user?.role === "Admin" || user?.role === "Premium";
   const handleShowOptions = () => {
     setShowOptions(!showOptions);
   };

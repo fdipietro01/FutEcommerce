@@ -3,7 +3,7 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRotateLeft } from "@fortawesome/free-solid-svg-icons";
 import styles from "./productManager.module.scss";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const RowProductTable = ({ item, editItem, deleteItem }) => {
   const [prod, setItem] = useState(item);
@@ -84,6 +84,9 @@ const RowProductTable = ({ item, editItem, deleteItem }) => {
           icon={faArrowRotateLeft}
           onClick={setStatus}
         />
+      </p>
+      <p name="status" readOnly type="" value={prod.status}>
+        <span className={styles.owner}>{prod.owner}</span>
       </p>
       <div>
         <button onClick={handleUpdate}>

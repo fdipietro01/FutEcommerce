@@ -27,7 +27,7 @@ const LoginContainer = () => {
   };
 
   const handleForgetPassword = () => {
-    navigate("/");
+    navigate("/reloginPetittion");
   };
   useEffect(() => {
     userCtx && navigate("/");

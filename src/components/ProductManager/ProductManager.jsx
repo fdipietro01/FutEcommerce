@@ -17,32 +17,36 @@ const ProductManager = ({
             **Para modificar un producto, editar directamente sobre el campo a
             cambiar <br />y confirmar haciendo click en ícono de editar.
           </p>
+          <p>**El registro "creador" no admite ser modificado.</p>
         </div>
       </div>
-      <table className={styles.table}>
-        <tbody>
-          <tr className={styles.titulos}>
-            <th className={styles.theads}>Nombre</th>
-            <th className={styles.theads}>Categoría</th>
-            <th className={styles.theads}>Stock</th>
-            <th className={styles.theads}>Precio</th>
-            <th className={styles.theads}>Descripción</th>
-            <th className={styles.theads}>Imagen</th>
-            <th className={styles.theads}>Disponible</th>
-            <th className={styles.update}>Edit</th>
-            <th className={styles.update}>Supr</th>
-          </tr>
-          {prods.map((item) => (
-            <tr className={styles.row} key={item._id}>
-              <RowProductTable
-                item={item}
-                editItem={editItem}
-                deleteItem={deleteItem}
-              />
+      {prods.length !== 0 && (
+        <table className={styles.table}>
+          <tbody>
+            <tr className={styles.titulos}>
+              <th className={styles.theads}>Nombre</th>
+              <th className={styles.theads}>Categoría</th>
+              <th className={styles.theads}>Stock</th>
+              <th className={styles.theads}>Precio</th>
+              <th className={styles.theads}>Descripción</th>
+              <th className={styles.theads}>Imagen</th>
+              <th className={styles.theads}>Disponible</th>
+              <th className={styles.theads}>Creador</th>
+              <th className={styles.update}>Edit</th>
+              <th className={styles.update}>Supr</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+            {prods.map((item) => (
+              <tr className={styles.row} key={item._id}>
+                <RowProductTable
+                  item={item}
+                  editItem={editItem}
+                  deleteItem={deleteItem}
+                />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
       <div>
         <h3 className={styles.subtitle}>Formulario para agregar productos</h3>
         <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>

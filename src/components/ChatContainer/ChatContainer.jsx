@@ -32,7 +32,6 @@ const ChatContainer = () => {
       );
 
     if (connected) {
-      console.log("entra");
       socket.on("confirmConnection", () =>
         socket.emit("usrLogueado", userName)
       );
@@ -50,7 +49,6 @@ const ChatContainer = () => {
     };
   }, []);
 
-  console.log(chat, connected);
   const setNewMessage = (message) => {
     socket.emit("nuevoMsj", message);
   };
