@@ -9,6 +9,17 @@ export const LoginContext = createContext();
 const LoginContextProvider = ({ children }) => {
   const [user, setUser] = useState();
 
+  const getUser = async () => {
+    if (Cookies.get("JWT")) {
+      const { data } = await getCurrentUser();
+      if (!data) {
+        setUser();
+        return;
+      }
+      setUser(data);
+    }
+  };
+
   const login = async (token) => {
     Cookies.set("JWT", token);
     await getUser();
@@ -27,27 +38,14 @@ const LoginContextProvider = ({ children }) => {
     setUser(data.user);
   };
 
-  const getUser = async () => {
-    if (Cookies.get("JWT")) {
-      const { data } = await getCurrentUser();
-      if (!data) {
-        setUser();
-      }
-      setUser(data);
-    }
-  };
   useEffect(() => {
     getUser();
   }, []);
 
-  const handleUser = (user) => {
-    setUser(user);
-  };
   return (
     <LoginContext.Provider
       value={{
         login,
-        handleUser,
         user,
         logOutSession,
         updateCartUser,

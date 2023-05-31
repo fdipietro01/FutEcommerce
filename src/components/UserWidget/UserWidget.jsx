@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
 const UserWidget = () => {
   const { user } = useContext(LoginContext);
   const [showOptions, setShowOptions] = useState(false);
-  const isAdmin = user?.role === "Admin" || user?.role === "Premium";
+  const isAdmin = user?.role === "Admin";
+  const isPremium = user?.role === "Premium";
+  const isUser = user?.role === "User";
   const handleShowOptions = () => {
     setShowOptions(!showOptions);
   };
@@ -56,10 +58,19 @@ const UserWidget = () => {
               <p className={styles.opt}>{getContent().btn2.label}</p>{" "}
             </Link>
           </div>
-          {user && isAdmin && (
+          {user && (isAdmin || isPremium) && (
             <div onClick={handleShowOptions}>
               <Link to={"/productManagerList"}>
                 <p className={styles.opt}>Adm catálogo</p>{" "}
+              </Link>
+            </div>
+          )}
+          {user && (isPremium || isUser) && (
+            <div onClick={handleShowOptions}>
+              <Link to={`/membresyContainer`}>
+                <p className={styles.opt}>
+                  {isPremium ? "Dejar de ser Premium" : "Ser miembre Premium"}
+                </p>{" "}
               </Link>
             </div>
           )}

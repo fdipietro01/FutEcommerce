@@ -6,7 +6,7 @@ import { getLogin } from "../../services/accountServices";
 import { SwalFn } from "../../utils/swal.jsx";
 
 const LoginContainer = () => {
-  const { user: userCtx, login, handleUser } = useContext(LoginContext);
+  const { user: userCtx, login } = useContext(LoginContext);
   const navigate = useNavigate();
   const [user, setUser] = useState({ email: "", password: "" });
 
@@ -21,7 +21,6 @@ const LoginContainer = () => {
       SwalFn("Error en Login", message, "error", "Aceptar");
     } else {
       login(token);
-      handleUser(data);
       navigate("/");
     }
   };

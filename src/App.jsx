@@ -18,6 +18,7 @@ import RegisterContainer from "./components/RegisterContainer/RegisterContainer"
 import ProfileCardContainer from "./components/ProfileCardContainer/ProfileCardContainer";
 import ProductManagerContainer from "./components/ProductManagerContainer/ProductManagerContainer";
 import ChatContainer from "./components/ChatContainer/ChatContainer";
+import MembrecyContainer from "./components/MembresyContainer/MembresyContainer";
 
 function App() {
   return (
@@ -44,6 +45,10 @@ function App() {
               <Route path="/checkout" element={<CheckoutContainer />} />
               <Route path="/feedback" element={<Feedback />} />
               <Route path="/chat" element={<ChatContainer />} />
+              <Route
+                path="/membresyContainer/"
+                element={<MembrecyContainer />}
+              />
               <Route path="*" element={<DefaultFailView />} />
             </Routes>
             <Footer />
