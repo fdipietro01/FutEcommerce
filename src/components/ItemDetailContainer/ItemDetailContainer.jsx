@@ -34,7 +34,7 @@ const ItemDetailContainer = () => {
     if (status !== 200) {
       dataErrorRedirect();
     }
-    modificarItem(data);
+    modificarItem(data.payload);
     setLoading(false);
   };
   useEffect(() => {

@@ -15,7 +15,12 @@ export const getAllProducts = async ({
 };
 
 export const getProductById = async (id) => {
-  return await axios(`http://localhost:8081/api/products/${id}`);
+  try {
+    const response = await axios(`http://localhost:8081/api/products/${id}`);
+    return response;
+  } catch (err) {
+    return { status: err.response.status, message: err.response.data.message };
+  }
 };
 
 export const updateItem = async (item) => {
@@ -58,8 +63,7 @@ export const createItem = async (item) => {
       `http://localhost:8081/api/products/`,
       item,
       {
-        headers: { Authorization: `Bearer ${jwt}` },
-        withCredentials: true,
+        headers: { Cookie: `JWT = ${jwt}` },
       }
     );
     return { status: response.status };
