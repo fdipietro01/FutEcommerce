@@ -27,15 +27,7 @@ const Login = ({ handleInput, handleSubmit, handleLogin }) => {
             name="edad"
           />
         </div>
-        <div className={styles.group}>
-          <label className={styles.label}>Url de Avatar</label>
-          <input
-            onChange={(e) => handleInput(e)}
-            className={styles.input}
-            name="avatar"
-            maxLength={"150"}
-          />
-        </div>
+
         <div className={styles.group}>
           <label className={styles.label}>Email</label>
           <input
@@ -52,6 +44,16 @@ const Login = ({ handleInput, handleSubmit, handleLogin }) => {
             name="password"
           />
         </div>
+        <div className={styles.group}>
+          <label className={styles.label}>Url de Avatar</label>
+          <input
+          type="file"
+            onChange={(e) => handleInput(e)}
+            className={styles.input}
+            name="avatar"
+            enctype="multipart/form-data"
+          />
+        </div>  
         <div className={styles.radio}>
           <label className={styles.label}>Membresía Premium</label>
           <input

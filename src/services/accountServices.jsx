@@ -39,7 +39,10 @@ export const createUser = async ({
         avatar,
         fecha,
         isPremium,
-      }
+      },
+      {headers: {
+        "Content-Type": "multipart/form-data",
+      } }
     );
     return { message: response.data.message, status: response.status };
   } catch (err) {
