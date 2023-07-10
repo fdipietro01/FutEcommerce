@@ -87,10 +87,8 @@ export const relogin = async ({ mail, password }) => {
 };
 
 export const getCurrentUser = async () => {
-  const jwt = Cookies.get("JWT");
   try {
     const response = await axios(`http://localhost:8081/sessions/current`, {
-      headers: { Authorization: `Bearer ${jwt}` },
       withCredentials: true,
     });
     return {
@@ -106,7 +104,6 @@ export const logOut = async () => {
   if (jwt) {
     try {
       const response = await axios(`http://localhost:8081/sessions/logout`, {
-        headers: { Authorization: `Bearer ${jwt}` },
         withCredentials: true,
       });
       return response;

@@ -8,7 +8,6 @@ export const createCart = async () => {
       `http://localhost:8081/api/carts`,
       {},
       {
-        headers: { Authorization: `Bearer ${jwt}` },
         withCredentials: true,
       }
     );
@@ -25,7 +24,6 @@ export const updateCart = async (cid, pid, quantity) => {
       `http://localhost:8081/api/carts/update`,
       { cid, pid, quantity },
       {
-        headers: { Authorization: `Bearer ${jwt}` },
         withCredentials: true,
       }
     );
@@ -40,7 +38,6 @@ export const getProductsFromCart = async (cid) => {
   const jwt = Cookies.get("JWT");
   try {
     const response = await axios.get(`http://localhost:8081/api/carts/${cid}`, {
-      headers: { Authorization: `Bearer ${jwt}` },
       withCredentials: true,
     });
     return { status: response.status, products: response.data.cartProducts };
@@ -55,7 +52,6 @@ export const deleteCart = async (cid) => {
     const response = await axios.delete(
       `http://localhost:8081/api/carts/${cid}`,
       {
-        headers: { Authorization: `Bearer ${jwt}` },
         withCredentials: true,
       }
     );
@@ -72,7 +68,6 @@ export const deleteSingleProduct = async (cid, pid) => {
     const response = await axios.delete(
       `http://localhost:8081/api/carts/${cid}/${pid}`,
       {
-        headers: { Authorization: `Bearer ${jwt}` },
         withCredentials: true,
       }
     );
@@ -90,7 +85,6 @@ export const purchaseCart = async (cid, email) => {
       `http://localhost:8081/api/carts/${cid}/purchase`,
       { email },
       {
-        headers: { Authorization: `Bearer ${jwt}` },
         withCredentials: true,
       }
     );

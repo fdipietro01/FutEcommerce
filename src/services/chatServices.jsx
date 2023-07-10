@@ -5,7 +5,6 @@ export const connectChat = async () => {
   const jwt = Cookies.get("JWT");
   try {
     const response = await axios.get(`http://localhost:8081/api/chat`, {
-      headers: { Authorization: `Bearer ${jwt}` },
       withCredentials: true,
     });
     return { status: response.status };

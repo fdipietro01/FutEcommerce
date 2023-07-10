@@ -30,41 +30,63 @@ const ProductManagerContainer = () => {
     setLoading(false);
   };
 
-  const editItem = async (item) => {
-    const { status, message } = await updateItem(item);
-    if (status === 200) {
-      SwalFn(
-        "Actualización exitosa",
-        "El producto ha sido modificado",
-        "success",
-        "Aceptar"
-      );
-    } else {
-      SwalFn(
-        "El producto no ha sido modificado",
-        message,
-        "error",
-        "Aceptar",
-        undefined,
-        () => setToogleRefresh((prev) => !prev)
-      );
-    }
+  const previousWaring = (actionTitle, field, action) => {
+    SwalFn(
+      `${actionTitle} jugador`,
+      <i>
+        <p>
+          ¿Esta seguro de querer {actionTitle.toLowerCase()} al item "{field}"?
+        </p>
+      </i>,
+      "warning",
+      "Aceptar",
+      "Cancelar",
+      () => action(),
+      () => {}
+    );
   };
 
-  const deleteItem = async (item) => {
-    const { status, message } = await eraseItem(item);
-    if (status === 200) {
-      SwalFn(
-        "Borrado exitoso",
-        "El producto ha sido eliminado",
-        "success",
-        "Aceptar",
-        undefined,
-        () => setToogleRefresh((prev) => !prev)
-      );
-    } else {
-      SwalFn("Error al borrar", message, "error", "Aceptar");
-    }
+  const editItem = (item) => {
+    const update = async () => {
+      const { status, message } = await updateItem(item);
+      if (status === 200) {
+        SwalFn(
+          "Actualización exitosa",
+          "El producto ha sido modificado",
+          "success",
+          "Aceptar"
+        );
+      } else {
+        SwalFn(
+          "El producto no ha sido modificado",
+          message,
+          "error",
+          "Aceptar",
+          undefined,
+          () => setToogleRefresh((prev) => !prev)
+        );
+      }
+    };
+    previousWaring("Actualizar", item.title, update);
+  };
+
+  const deleteItem = (item) => {
+    const erase = async () => {
+      const { status, message } = await eraseItem(item._id);
+      if (status === 200) {
+        SwalFn(
+          "Borrado exitoso",
+          "El producto ha sido eliminado",
+          "success",
+          "Aceptar",
+          undefined,
+          () => setToogleRefresh((prev) => !prev)
+        );
+      } else {
+        SwalFn("Error al borrar", message, "error", "Aceptar");
+      }
+    };
+    previousWaring("Eliminar", item.title, erase);
   };
 
   const handleInput = ({ target }) => {

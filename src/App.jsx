@@ -17,6 +17,7 @@ import Relogin from "./components/Relogin/Relogin";
 import RegisterContainer from "./components/RegisterContainer/RegisterContainer";
 import ProfileCardContainer from "./components/ProfileCardContainer/ProfileCardContainer";
 import ProductManagerContainer from "./components/ProductManagerContainer/ProductManagerContainer";
+import UserManagerContainer from "./components/UserManagerContainer/UserManagerContainer";
 import ChatContainer from "./components/ChatContainer/ChatContainer";
 import MembrecyContainer from "./components/MembresyContainer/MembresyContainer";
 
@@ -39,6 +40,10 @@ function App() {
               <Route
                 path="/productManagerList"
                 element={<ProductManagerContainer />}
+              />
+              <Route
+                path="/userMaganerList"
+                element={<UserManagerContainer />}
               />
               <Route path="/profile" element={<ProfileCardContainer />} />
               <Route path="/cart" element={<Cart />} />

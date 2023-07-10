@@ -12,9 +12,8 @@ const ProductManager = ({
       <div className={styles.headerBox}>
         <h3 className={styles.title}>Administrar Catálogo</h3>
         <div className={styles.box}>
-          <p>*Para borrar un producto, hacer click en el ícono de suprimir.</p>
           <p>
-            **Para modificar un producto, editar directamente sobre el campo a
+            *Para modificar un producto, editar directamente sobre el campo a
             cambiar <br />y confirmar haciendo click en ícono de editar.
           </p>
           <p>**El registro "creador" no admite ser modificado.</p>
@@ -60,11 +59,20 @@ const ProductManager = ({
           </div>
           <div className={styles.group}>
             <label className={styles.label}>Categoría</label>
-            <input
-              onChange={(e) => handleInput(e)}
-              className={styles.input}
+            <select
+              className={styles.select}
               name="category"
-            />
+              type=""
+              onChange={(e) => handleInput(e)}
+            >
+              <option className={styles.selecTitle} selected disabled>
+                Seleccionar
+              </option>
+              <option value="Arqueros">Arqueros</option>
+              <option value="Defensores">Defensores</option>
+              <option value="Centrocampistas">Centrocampistas </option>
+              <option value="Delanteros">Delanteros</option>
+            </select>
           </div>
           <div className={styles.group}>
             <label className={styles.label}>Precio</label>
@@ -107,12 +115,18 @@ const ProductManager = ({
             />
           </div>
           <div className={styles.group}>
-            <label className={styles.label}>Status</label>
-            <input
-              onChange={(e) => handleInput(e)}
-              className={styles.input}
+            <label className={styles.label}>Status (disponible)</label>
+            <select
+              className={styles.select}
               name="status"
-            />
+              onChange={(e) => handleInput(e)}
+            >
+              <option className={styles.selecTitle} selected disabled>
+                Seleccionar
+              </option>
+              <option value="true">Disponible</option>
+              <option value="false">No Disponible</option>
+            </select>
           </div>
           <button className="btn btn-primary">Crear Producto</button>
         </form>

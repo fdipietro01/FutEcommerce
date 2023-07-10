@@ -30,7 +30,6 @@ export const updateItem = async (item) => {
       `http://localhost:8081/api/products/${item._id}`,
       item,
       {
-        headers: { Authorization: `Bearer ${jwt}` },
         withCredentials: true,
       }
     );
@@ -46,7 +45,6 @@ export const eraseItem = async (pid) => {
     const response = await axios.delete(
       `http://localhost:8081/api/products/${pid}`,
       {
-        headers: { Authorization: `Bearer ${jwt}` },
         withCredentials: true,
       }
     );
@@ -63,7 +61,7 @@ export const createItem = async (item) => {
       `http://localhost:8081/api/products/`,
       item,
       {
-        headers: { Cookie: `JWT = ${jwt}` },
+        withCredentials: true,
       }
     );
     return { status: response.status };

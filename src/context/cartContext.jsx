@@ -15,12 +15,12 @@ export const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [carrito, setCarrito] = useState([]);
   const [order, setOrder] = useState();
-  const { user, updateCartUser } = useContext(LoginContext);
+  const { user, setCartToUser } = useContext(LoginContext);
 
   const createCartAndSetToUser = async () => {
     const { id: cartId } = await createCart();
     if (cartId) {
-      await updateCartUser(user._id, cartId);
+      await setCartToUser(user._id, cartId);
     }
   };
   const requestProducts = async (cid) => {

@@ -11,7 +11,7 @@ const RowProductTable = ({ item, editItem, deleteItem }) => {
     editItem(prod);
   };
   const handleDelete = () => {
-    deleteItem(prod._id);
+    deleteItem(prod);
   };
 
   const setStatus = () => {

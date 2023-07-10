@@ -58,21 +58,40 @@ const UserWidget = () => {
               <p className={styles.opt}>{getContent().btn2.label}</p>{" "}
             </Link>
           </div>
-          {user && (isAdmin || isPremium) && (
-            <div onClick={handleShowOptions}>
-              <Link to={"/productManagerList"}>
-                <p className={styles.opt}>Adm catálogo</p>{" "}
-              </Link>
-            </div>
-          )}
-          {user && (isPremium || isUser) && (
+          {user && isAdmin ? (
+            <>
+              <div onClick={handleShowOptions}>
+                <Link to={"/productManagerList"}>
+                  <p className={styles.opt}>Adm catálogo</p>{" "}
+                </Link>
+              </div>
+              <div onClick={handleShowOptions}>
+                <Link to={"/userMaganerList"}>
+                  <p className={styles.opt}>Adm usuarios</p>{" "}
+                </Link>
+              </div>
+            </>
+          ) : isPremium ? (
+            <>
+              <div onClick={handleShowOptions}>
+                <Link to={"/productManagerList"}>
+                  <p className={styles.opt}>Adm catálogo</p>{" "}
+                </Link>
+              </div>
+              <div onClick={handleShowOptions}>
+                <Link to={`/membresyContainer`}>
+                  <p className={styles.opt}>{"Dejar de ser Premium"}</p>{" "}
+                </Link>
+              </div>
+            </>
+          ) : isUser ? (
             <div onClick={handleShowOptions}>
               <Link to={`/membresyContainer`}>
-                <p className={styles.opt}>
-                  {isPremium ? "Dejar de ser Premium" : "Ser miembre Premium"}
-                </p>{" "}
+                <p className={styles.opt}>{"Ser miembro Premium"}</p>{" "}
               </Link>
             </div>
+          ) : (
+            <></>
           )}
         </div>
       )}

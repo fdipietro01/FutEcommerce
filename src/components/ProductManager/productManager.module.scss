@@ -5,6 +5,7 @@ align-items: center;
 background-image: url("../../assets/images/bk.jfif");
 margin: 40px;
 border-radius: 10px;
+min-height: 550px;
 }
 
 .headerBox{
@@ -39,11 +40,12 @@ border-radius: 10px;
     overflow: hidden;
 }
 .titulos{
-    background-color: red;
+    background-color: #0d6efd;
     display: flex;
     justify-content: space-around;
     padding: 0;
     margin: 0;
+    color: white
 }
 
 .theads{
@@ -55,6 +57,7 @@ border-radius: 10px;
 .row{
     display: flex;
     justify-content: space-around;
+    margin-bottom: 10px;
 }
 
 .row input{
@@ -117,6 +120,11 @@ border-radius: 10px;
     border-radius: 8px;
 }
 
+.select{
+    border-radius: 8px;
+    padding: 3px 15px;
+}
+
 .group{
     display: flex;
     flex-direction: column;
@@ -130,4 +138,8 @@ border-radius: 10px;
 
 .owner{
     font-size: 12px;
+}
+.selecTitle{
+    text-align: center;
+    font-weight: 500;
 }

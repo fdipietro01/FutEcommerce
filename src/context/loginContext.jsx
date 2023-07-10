@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { createContext } from "react";
 import Cookies from "js-cookie";
 import { getCurrentUser, logOut } from "../services/accountServices";
-import { updateUser } from "../services/userServices";
+import { updateUserSettingCart } from "../services/userServices";
 
 export const LoginContext = createContext();
 
@@ -33,8 +33,8 @@ const LoginContextProvider = ({ children }) => {
     }
   };
 
-  const updateCartUser = async (id, cid) => {
-    const data = await updateUser(id, cid);
+  const setCartToUser = async (id, cid) => {
+    const data = await updateUserSettingCart(id, cid);
     setUser(data.user);
   };
 
@@ -48,7 +48,7 @@ const LoginContextProvider = ({ children }) => {
         login,
         user,
         logOutSession,
-        updateCartUser,
+        setCartToUser,
       }}
     >
       {children}
