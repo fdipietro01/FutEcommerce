@@ -23,7 +23,6 @@ const UserMaganerContainer = () => {
 
   const setRole = async (uid) => {
     const { status } = await setMembresyRole(uid);
-    console.log(status);
 
     if (status !== 200)
       SwalFn(
