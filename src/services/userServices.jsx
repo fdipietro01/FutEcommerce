@@ -52,7 +52,6 @@ export const setMembresyRole = async (uid) => {
         withCredentials: true,
       }
     );
-    console.log(response);
     return {
       user: response.data.newUser,
       status: response.status,

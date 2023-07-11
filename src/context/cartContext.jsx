@@ -25,7 +25,6 @@ const CartProvider = ({ children }) => {
   };
   const requestProducts = async (cid) => {
     const { products } = await getProductsFromCart(cid);
-    console.log({ products });
     setCarrito(products);
   };
   useEffect(() => {
@@ -73,8 +72,6 @@ const CartProvider = ({ children }) => {
   const estaVacio = () => carrito.length === 0;
 
   const definirOrden = async (orden) => {
-    console.log({ orden });
-    console.log(user.carrito);
     await requestProducts(user?.carrito);
     setOrder(orden);
   };

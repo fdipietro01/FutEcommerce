@@ -8,8 +8,7 @@ import Loading from "../Loading/loading.jsx";
 import Checkout from "../Checkout/Checkout";
 
 const CheckoutContainer = () => {
-  const { estaVacio, order, reiniciarOrden, definirOrden } =
-    useContext(CartContext);
+  const { order, reiniciarOrden, definirOrden } = useContext(CartContext);
   const { user } = useContext(LoginContext);
   const navigate = useNavigate();
 

@@ -1,7 +1,6 @@
 import styles from "./checkout.module.scss";
 
 const ListTable = ({ products, approved }) => {
-  console.log("Entro al ListTable");
   return (
     <div className={styles.listTable}>
       <h5 className={styles.title}>
