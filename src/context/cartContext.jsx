@@ -25,6 +25,7 @@ const CartProvider = ({ children }) => {
   };
   const requestProducts = async (cid) => {
     const { products } = await getProductsFromCart(cid);
+    console.log({ products });
     setCarrito(products);
   };
   useEffect(() => {
@@ -35,10 +36,6 @@ const CartProvider = ({ children }) => {
       }
     } else setCarrito([]);
   }, [user]);
-
-  useEffect(() => {
-    order && setCarrito(order.remainingProducts ?? []), [order];
-  });
 
   const agregarProducto = async (nuevoItem, cantidad) => {
     const { status } = await updateCart(user.carrito, nuevoItem._id, cantidad);
@@ -75,13 +72,15 @@ const CartProvider = ({ children }) => {
 
   const estaVacio = () => carrito.length === 0;
 
-  const definirOrden = (orden) => setOrder(orden);
-
-  const reiniciarContexto = () => {
-    setOrder();
-    setCarrito([]);
+  const definirOrden = async (orden) => {
+    console.log({ orden });
+    console.log(user.carrito);
+    await requestProducts(user?.carrito);
+    setOrder(orden);
   };
-
+  const reiniciarOrden = () => {
+    setOrder();
+  };
   return (
     <CartContext.Provider
       value={{
@@ -92,7 +91,7 @@ const CartProvider = ({ children }) => {
         calcularTotal,
         contarProductos,
         definirOrden,
-        reiniciarContexto,
+        reiniciarOrden,
         estaVacio,
         carrito,
         order,

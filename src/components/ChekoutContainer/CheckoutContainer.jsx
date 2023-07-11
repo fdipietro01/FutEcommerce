@@ -8,7 +8,8 @@ import Loading from "../Loading/loading.jsx";
 import Checkout from "../Checkout/Checkout";
 
 const CheckoutContainer = () => {
-  const { estaVacio, order, definirOrden } = useContext(CartContext);
+  const { estaVacio, order, reiniciarOrden, definirOrden } =
+    useContext(CartContext);
   const { user } = useContext(LoginContext);
   const navigate = useNavigate();
 
@@ -18,18 +19,21 @@ const CheckoutContainer = () => {
         user.carrito,
         user.email
       );
-      if (status === "error")
+      if (status === "error") {
         SwalFn("Compra no realizada", message, "error", "Aceptar");
-      else SwalFn("Compra realizada con éxito", message, "success", "Aceptar");
+      } else {
+        SwalFn("Compra realizada con éxito", message, "success", "Aceptar");
+      }
       definirOrden(data);
     }
   };
 
   useEffect(() => {
-    if (estaVacio() || !user) navigate("/");
-  }, [estaVacio]);
+    if (!user) navigate("/");
+  }, [user]);
 
   useEffect(() => {
+    reiniciarOrden();
     submitOrder();
   }, []);
 

@@ -8,7 +8,6 @@ import CartProvider from "./context/cartContext";
 import Cart from "./components/Cart/Cart";
 import DefaultFailView from "./components/DefaultFailView/DefaultFailView";
 import CheckoutContainer from "./components/ChekoutContainer/CheckoutContainer";
-import Feedback from "./components/Feedback/Feedback";
 import LoginContextProvider from "./context/loginContext";
 import LoginContainer from "./components/LoginContainer/loginContainer";
 import LogOutContainer from "./components/LogOutContainer/LogOutContainer";
@@ -48,7 +47,6 @@ function App() {
               <Route path="/profile" element={<ProfileCardContainer />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<CheckoutContainer />} />
-              <Route path="/feedback" element={<Feedback />} />
               <Route path="/chat" element={<ChatContainer />} />
               <Route
                 path="/membresyContainer/"

@@ -14,7 +14,12 @@ const Checkout = ({ order }) => {
                 products={order.updatedStockProducts}
                 approved={true}
               />
-              <ListTable products={order.remainingProducts} approved={false} />
+              {order.remainingProducts.length > 0 && (
+                <ListTable
+                  products={order.remainingProducts}
+                  approved={false}
+                />
+              )}
             </div>
           ) : (
             <ListTable products={order.remainingProducts} />
