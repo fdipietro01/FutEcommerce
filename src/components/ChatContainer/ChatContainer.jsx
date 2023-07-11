@@ -13,11 +13,18 @@ const ChatContainer = () => {
   const navigate = useNavigate();
 
   const userName = user && `${user.nombre} ${user.apellido}`;
+
   const socketConnect = async () => {
     const { status } = await connectChat();
     if (status === 200) {
       setConnected(true);
       socket.connect();
+      socket.on("confirmConnection", () => {
+        +socket.emit("usrLogueado", userName);
+      });
+      socket.on("chat", (data) => {
+        setChat(data);
+      });
     }
   };
   useEffect(() => {
@@ -30,18 +37,8 @@ const ChatContainer = () => {
         undefined,
         () => navigate("/login")
       );
-
-    if (connected) {
-      socket.on("confirmConnection", () =>
-        socket.emit("usrLogueado", userName)
-      );
-      socket.on("chat", (data) => {
-        setChat(data);
-      });
-    } else {
-      socketConnect();
-    }
-  }, [connected, user]);
+    if (!connected) socketConnect();
+  }, [connected, user, chat]);
 
   useEffect(() => {
     return () => {
