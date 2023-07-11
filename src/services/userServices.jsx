@@ -42,6 +42,17 @@ export const deleteUser = async (uid) => {
     return { status: err.response.status };
   }
 };
+export const deleteAllUsers = async (uid) => {
+  try {
+    const response = await axios.delete(`http://localhost:8081/api/users/`, {
+      withCredentials: true,
+    });
+    return { deleted: response.data.deleted, status: response.status };
+  } catch (err) {
+    console.log(err);
+    return { status: err.response.status };
+  }
+};
 
 export const setMembresyRole = async (uid) => {
   try {

@@ -125,3 +125,24 @@ min-height: 550px;
 .owner{
     font-size: 12px;
 }
+
+.btn{
+    display: flex;
+    justify-content: space-around;
+    margin-top: auto;
+    margin-bottom: 40px;
+  }
+  
+  .btn > * {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+table > div{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mailItem{
+    list-style-type: none;
+}

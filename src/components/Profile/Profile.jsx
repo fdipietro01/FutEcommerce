@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
 import styles from "./profile.module.scss";
 const ProfileCard = ({ data }) => {
-  const { avatar, nombre, apellido, edad, email, role, fecha, _id } = data;
+  const {
+    avatar,
+    nombre,
+    apellido,
+    edad,
+    email,
+    role,
+    fecha,
+    _id,
+    ultimaConexion,
+  } = data;
   return (
     <>
       <div className={styles.container}>
@@ -22,6 +32,9 @@ const ProfileCard = ({ data }) => {
               <li>Apellido: {apellido}</li>
               <li>Correo: {email} </li>
               <li>Edad: {edad} años </li>
+              <li>
+                Última Conexion: {new Date(ultimaConexion).toLocaleString()}{" "}
+              </li>
               <li>Id: {_id}</li>
             </ul>
           </div>

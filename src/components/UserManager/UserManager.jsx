@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import UserRow from "./UserRow";
 import styles from "./userManager.module.scss";
-const UserManager = ({ users, deleteUsr, setRole }) => {
+
+const UserManager = ({ users, deleteUsr, setRole, deleteAllUsrs }) => {
   return (
     <div className={styles.cardsContainer}>
       <div className={styles.headerBox}>
@@ -29,10 +31,20 @@ const UserManager = ({ users, deleteUsr, setRole }) => {
               </tr>
             ))}
           </tbody>
+          <div>
+            <button className={"btn btn-primary"} onClick={deleteAllUsrs}>
+              Eliminar usuarios inactivos
+            </button>
+          </div>
         </table>
       ) : (
         <div>No existen usarios actualmente</div>
       )}
+      <p className={styles.btn}>
+        <Link to="/">
+          <button className={"btn btn-primary"}>Volver al Inicio</button>
+        </Link>
+      </p>
     </div>
   );
 };
