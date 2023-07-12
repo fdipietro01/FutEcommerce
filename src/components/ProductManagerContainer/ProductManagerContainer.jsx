@@ -16,7 +16,6 @@ const ProductManagerContainer = () => {
   const [loading, setLoading] = useState(true);
   const [newProduct, setNewProduct] = useState({});
   const [toogleRefresh, setToogleRefresh] = useState(false);
-  const navigate = useNavigate();
   const { user } = useContext(LoginContext);
 
   const getProducts = async () => {
@@ -91,7 +90,8 @@ const ProductManagerContainer = () => {
 
   const handleInput = ({ target }) => {
     const np = { ...newProduct };
-    np[target.name] = target.value;
+    np[target.name] =
+      target.name === "thumbnail" ? target.files[0] : target.value;
     setNewProduct(np);
   };
   const handleSubmit = async (e) => {
@@ -101,7 +101,7 @@ const ProductManagerContainer = () => {
       e.target.reset();
       SwalFn(
         "Producto creado exitosamente",
-        "El producto ha sido craado",
+        "El producto ha sido creaado",
         "success",
         "Aceptar",
         undefined,
@@ -123,6 +123,7 @@ const ProductManagerContainer = () => {
     <Loading />
   ) : (
     <ProductManager
+      newProduct={newProduct}
       prods={productos}
       editItem={editItem}
       deleteItem={deleteItem}

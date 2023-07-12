@@ -1,5 +1,5 @@
 import styles from "./register.module.scss";
-const Login = ({ handleInput, handleSubmit, handleLogin }) => {
+const Register = ({ handleInput, handleSubmit, handleLogin }) => {
   return (
     <div className={styles.container}>
       <form onSubmit={(e) => handleSubmit(e)}>
@@ -47,13 +47,12 @@ const Login = ({ handleInput, handleSubmit, handleLogin }) => {
         <div className={styles.group}>
           <label className={styles.label}>Url de Avatar</label>
           <input
-          type="file"
+            type="file"
             onChange={(e) => handleInput(e)}
             className={styles.input}
             name="avatar"
-            enctype="multipart/form-data"
           />
-        </div>  
+        </div>
         <div className={styles.radio}>
           <label className={styles.label}>Membresía Premium</label>
           <input
@@ -76,4 +75,4 @@ const Login = ({ handleInput, handleSubmit, handleLogin }) => {
   );
 };
 
-export default Login;
+export default Register;

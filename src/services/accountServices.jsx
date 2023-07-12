@@ -7,7 +7,6 @@ export const getLogin = async ({ email, password }) => {
       email,
       password,
     });
-
     return {
       message: response.data.message,
       data: response.data.user,
@@ -39,10 +38,12 @@ export const createUser = async ({
         avatar,
         fecha,
         isPremium,
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       }
-      // {headers: {
-      //   "Content-Type": "multipart/form-data",
-      // } }
     );
     return { message: response.data.message, status: response.status };
   } catch (err) {

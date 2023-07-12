@@ -6,6 +6,7 @@ const ProductManager = ({
   deleteItem,
   handleSubmit,
   handleInput,
+  newProduct,
 }) => {
   return (
     <div className={styles.cardsContainer}>
@@ -108,14 +109,19 @@ const ProductManager = ({
           </div>
           <div className={styles.group}>
             <label className={styles.label}>Imagen</label>
+            <label htmlFor="imageProd" className={styles.file}>
+              {newProduct.thumbnail?.name ?? "Seleccionar"}
+            </label>
             <input
+              id="imageProd"
+              type="file"
               onChange={(e) => handleInput(e)}
-              className={styles.input}
+              className={styles.hidden}
               name="thumbnail"
             />
           </div>
           <div className={styles.group}>
-            <label className={styles.label}>Status (disponible)</label>
+            <label className={styles.label}>Status</label>
             <select
               className={styles.select}
               name="status"

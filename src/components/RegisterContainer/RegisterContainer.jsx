@@ -24,7 +24,8 @@ const RegisterContainer = () => {
     if (target.name === "isPremium") {
       newUser.isPremium = !newUser.isPremium;
     } else {
-      newUser[target.name] = target.value;
+      newUser[target.name] =
+        target.name === "avatar" ? target.files[0] : target.value;
     }
     setUser({ ...newUser });
   };

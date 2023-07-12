@@ -103,7 +103,7 @@ min-height: 550px;
 
 .form{
     display: flex;
-    width: 1000px;
+    width: 950px;
     justify-content: space-around;
     flex-wrap: wrap;
     border: 3px solid white;
@@ -116,20 +116,37 @@ min-height: 550px;
     color: white;
 }
 
+.file{
+    width: 100%;
+    border-radius: 8px;
+    background-color: white;
+    padding: 2px;
+    display: flex;
+    justify-content: center ;
+}
+
+.file:hover{
+    cursor: pointer;
+}
+
 .input{
     border-radius: 8px;
+    width: 100%;
+    padding: 0 5px;
+    min-height: 18px;
 }
 
 .select{
     border-radius: 8px;
-    padding: 3px 15px;
+    padding: 3px 0px;
 }
 
 .group{
     display: flex;
     flex-direction: column;
     font-size: 18px;
-    margin: 10px 10px
+    width: 20%;
+    margin: 10px 5px
 }
 
 .form button{
@@ -142,4 +159,8 @@ min-height: 550px;
 .selecTitle{
     text-align: center;
     font-weight: 500;
+}
+
+.hidden{
+    display: none;
 }

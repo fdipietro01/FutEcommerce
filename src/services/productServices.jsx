@@ -55,12 +55,14 @@ export const eraseItem = async (pid) => {
 };
 
 export const createItem = async (item) => {
-  const jwt = Cookies.get("JWT");
   try {
     const response = await axios.post(
       `http://localhost:8081/api/products/`,
       item,
       {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
         withCredentials: true,
       }
     );
