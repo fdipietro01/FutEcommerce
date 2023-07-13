@@ -1,19 +1,22 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
-import Loading from "../Loading/loading";
-import { setMembresyRole } from "../../services/userServices";
+import { useState, useContext, useEffect } from "react";
+import { setMembresyRole, uploadDocuments } from "../../services/userServices";
 import { LoginContext } from "../../context/loginContext";
 import { SwalFn } from "../../utils/swal";
 import Cookies from "js-cookie";
+import MembresyForm from "../MembresyForm/MembresyForm";
 
-const MembrecyContainer = () => {
-  const [loading, setLoading] = useState(true);
+const MembresyContainer = () => {
   const navigate = useNavigate();
   const { user, login } = useContext(LoginContext);
+  const [documents, setDocuments] = useState({
+    id: "",
+    comproDom: "",
+    comproCuen: "",
+  });
 
-  const toogleMembresy = async () => {
+  const setMembresy = async () => {
     const { user: newUser, status, newToken } = await setMembresyRole(user._id);
-
     if (status !== 200)
       SwalFn(
         "Error en cambiar estado de membresía",
@@ -37,14 +40,72 @@ const MembrecyContainer = () => {
         "success",
         "Aceptar",
         undefined,
-        () => navigate("/login")
+        () => navigate("/profile")
       );
     }
   };
+
+  const handleInput = ({ target }) => {
+    const newDocs = { ...documents };
+    newDocs[target.name] = target.files[0];
+    setDocuments(newDocs);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!Object.values(documents).some((doc) => doc !== "")) {
+      SwalFn(
+        "Error al cargar documentos",
+        <i>
+          <p>Debe al menos cargarse un documento para ser enviado</p>
+        </i>,
+        "error",
+        "Aceptar",
+        undefined
+      );
+      return;
+    }
+    const { status, message, isUpgradeable } = await uploadDocuments(
+      user._id,
+      Object.values(documents)
+    );
+    if (status === 200) {
+      SwalFn(
+        "Documentación cargada",
+        <i>
+          <p>{message}</p>
+        </i>,
+        "success",
+        isUpgradeable ? "Solicitar Premium" : "Aceptar",
+        "Cancelar",
+        isUpgradeable ? setMembresy : () => {}
+      );
+    } else {
+      SwalFn(
+        "Error en la carga",
+        <i>
+          <p>{message}</p>
+        </i>,
+        "error",
+        "Aceptar",
+        undefined
+      );
+    }
+  };
+
   useEffect(() => {
-    toogleMembresy();
+    user.role === "Premium" && setMembresy();
   }, []);
-  return loading && <Loading />;
+
+  return (
+    user?.role === "User" && (
+      <MembresyForm
+        handleInput={handleInput}
+        handleSubmit={handleSubmit}
+        documents={documents}
+      />
+    )
+  );
 };
 
-export default MembrecyContainer;
+export default MembresyContainer;

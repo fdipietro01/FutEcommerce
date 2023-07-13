@@ -24,7 +24,6 @@ export const createUser = async ({
   edad,
   avatar,
   fecha,
-  isPremium,
 }) => {
   try {
     const response = await axios.post(
@@ -37,7 +36,6 @@ export const createUser = async ({
         edad,
         avatar,
         fecha,
-        isPremium,
       },
       {
         headers: {

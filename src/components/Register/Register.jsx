@@ -53,15 +53,6 @@ const Register = ({ handleInput, handleSubmit, handleLogin }) => {
             name="avatar"
           />
         </div>
-        <div className={styles.radio}>
-          <label className={styles.label}>Membresía Premium</label>
-          <input
-            onChange={(e) => handleInput(e)}
-            className={styles.input}
-            name="isPremium"
-            type="checkbox"
-          />
-        </div>
         <div className={styles.btns}>
           <button className={"btn btn-primary"} type="submit">
             Registrarse

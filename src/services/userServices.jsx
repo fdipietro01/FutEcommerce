@@ -73,3 +73,29 @@ export const setMembresyRole = async (uid) => {
     return { status: err.response.status };
   }
 };
+
+export const uploadDocuments = async (uid, documents) => {
+  try {
+    const response = await axios.post(
+      `http://localhost:8081/api/users/${uid}/documents`,
+      {
+        id: documents[0],
+        comproDom: documents[1],
+        comproCuen: documents[2],
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      }
+    );
+    return {
+      message: response.data.message,
+      isUpgradeable: response.data.isUpgradeable,
+      status: response.status,
+    };
+  } catch (err) {
+    return { message: err.response.data.message };
+  }
+};

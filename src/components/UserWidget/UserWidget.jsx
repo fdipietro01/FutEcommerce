@@ -10,7 +10,6 @@ const UserWidget = () => {
   const [showOptions, setShowOptions] = useState(false);
   const isAdmin = user?.role === "Admin";
   const isPremium = user?.role === "Premium";
-  const isUser = user?.role === "User";
   const handleShowOptions = () => {
     setShowOptions(!showOptions);
   };
@@ -78,18 +77,7 @@ const UserWidget = () => {
                   <p className={styles.opt}>Adm catálogo</p>{" "}
                 </Link>
               </div>
-              <div onClick={handleShowOptions}>
-                <Link to={`/membresyContainer`}>
-                  <p className={styles.opt}>{"Dejar de ser Premium"}</p>{" "}
-                </Link>
-              </div>
             </>
-          ) : isUser ? (
-            <div onClick={handleShowOptions}>
-              <Link to={`/membresyContainer`}>
-                <p className={styles.opt}>{"Ser miembro Premium"}</p>{" "}
-              </Link>
-            </div>
           ) : (
             <></>
           )}

@@ -24,7 +24,15 @@ const ProfileCard = ({ data }) => {
           <p>
             Usuario creado el <br /> {fecha}
           </p>
-
+          <p className={"btn btn-primary"}>
+            {" "}
+            <Link className={styles.membresyBtn} to="/membresyContainer">
+              {" "}
+              {role === "User"
+                ? "Ser miembro Premium"
+                : "Dejar de ser miembro Premium"}
+            </Link>
+          </p>
           <div className={styles.skills}>
             <h6>Personal</h6>
             <ul>

@@ -41,7 +41,7 @@ const Chat = ({ messages, setNewMessage, userName }) => {
         </div>
         <div className={styles.chatList}>{chat}</div>
         <div className={styles.formBox}>
-          <form className={styles.newMessage} onSubmit={handleSubmit}>
+          <form className={styles.newMessage} onSubmit={(e) => handleSubmit(e)}>
             <input
               value={inputState}
               placeholder="Escriba un nuevo mensaje"
